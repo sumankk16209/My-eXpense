@@ -1,0 +1,36 @@
+site_name: Expense Tracker Documentation
+
+nav:
+  - Home: README.md
+  - Deployment Guide: DEPLOYMENT.md
+  - AI Forecasting: AI_FORECASTING_README.md
+  - Fix for 422 Error: FIX_422_ERROR.md
+
+theme:
+  name: material
+  palette:
+    primary: deep purple
+    accent: amber
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - navigation.tracking
+    - search.highlight
+    - search.suggest
+    - toc.integrate
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - attr_list
+  - md_in_html

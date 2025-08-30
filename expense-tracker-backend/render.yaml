@@ -2,13 +2,17 @@ services:
   - type: web
     name: expense-tracker-backend
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      pip install -r requirements.txt
+      python -m alembic upgrade head
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.0
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: expense-tracker-db
+          property: postgresql://expense_tracker_xc0x_user:hJyVvvm7O79APnfiBNji9pGjtNBr3sIF@dpg-d2pb00d6ubrc73c4nt8g-a/expense_tracker_xc0x
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG

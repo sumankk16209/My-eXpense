@@ -20,7 +20,21 @@ def upgrade():
     # Get the default user ID
     connection = op.get_bind()
     result = connection.execute(sa.text("SELECT id FROM users WHERE username = 'default_user'"))
-    default_user_id = result.fetchone()[0]
+    user_result = result.fetchone()
+    
+    if user_result is None:
+        # No default user exists, create one
+        connection.execute(sa.text("""
+            INSERT INTO users (email, username, hashed_password, full_name, is_active)
+            VALUES ('default@example.com', 'default_user', 'default_hashed_password', 'Default User', 'active')
+        """))
+        connection.commit()
+        
+        # Get the newly created user ID
+        result = connection.execute(sa.text("SELECT id FROM users WHERE username = 'default_user'"))
+        default_user_id = result.fetchone()[0]
+    else:
+        default_user_id = user_result[0]
     
     # Add new columns to categories table
     op.add_column('categories', sa.Column('description', sa.String(), nullable=True))

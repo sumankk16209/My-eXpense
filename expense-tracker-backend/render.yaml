@@ -14,4 +14,4 @@ services:
       - key: DEBUG
         value: false
       - key: ALLOWED_ORIGINS
-        value: https://your-netlify-domain.netlify.app
+        value: https://my-expense-tracker-ai.netlify.app

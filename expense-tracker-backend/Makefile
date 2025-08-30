@@ -51,7 +51,7 @@ init-db: ## Initialize database and create first migration
 migrate-from-sqlite: ## Migrate data from existing SQLite database
 	@echo "🔄 Migrating data from SQLite to PostgreSQL..."
 	python3 scripts/migrate_from_sqlite.py
-	@echo "✅ Migration script completed!"
+	@echo "✅ Migration script completed successfully!"
 
 clean: ## Clean up generated files
 	find . -type f -name "*.pyc" -delete

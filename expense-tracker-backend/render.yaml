@@ -12,7 +12,7 @@ services:
       - key: DATABASE_URL
         fromDatabase:
           name: expense-tracker-db
-          property: postgresql://expense_tracker_xc0x_user:hJyVvvm7O79APnfiBNji9pGjtNBr3sIF@dpg-d2pb00d6ubrc73c4nt8g-a/expense_tracker_xc0x
+          property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
